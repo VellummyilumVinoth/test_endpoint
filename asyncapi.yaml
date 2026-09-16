@@ -1,25 +1,43 @@
-asyncapi: '2.0.0'
+asyncapi: 2.6.0
 info:
-  title: 'Math Tutor WebSocket'
+  title: voice-agent
   version: 1.0.0
 servers:
-  localhost:
-    url: localhost
+  development:
+    url: "{server}:{port}"
     protocol: ws
+    protocolVersion: "13"
+    variables:
+      server:
+        default: ws://localhost
+      port:
+        default: "9091"
 channels:
   /:
     publish:
-      operationId: ReceiveMessage
       message:
-        $ref: '#/components/messages/message'
+        $ref: '#/components/messages/ChatMessage'
     subscribe:
-      operationId: SendMessage
       message:
-        $ref: '#/components/messages/message'
+        payload:
+          type: string
 components:
   messages:
-    message:
-      name: message
-      title: message
+    ChatMessage:
       payload:
-        type: object
+        $ref: '#/components/schemas/ChatMessage'
+  schemas:
+    ChatMessage:
+      type: object
+      required:
+        - sessionId
+        - message
+      properties:
+        sessionId:
+          type: string
+          description: >-
+            Identifies the user's session. Stable across the turns of one
+            connection, so it can be used directly as an agent memory key.
+        message:
+          type: string
+          description: The latest user utterance.

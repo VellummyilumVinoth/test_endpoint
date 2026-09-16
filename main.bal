@@ -16,7 +16,7 @@
 
 import ballerina/http;
 import ballerina/log;
-import ballerinax/ai.wso2.integration;
+import vinoth/ai.wso2.integration;
 import ballerina/ai;
 import ballerina/websocket;
 
