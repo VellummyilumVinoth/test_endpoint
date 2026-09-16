@@ -387,6 +387,9 @@ dependencies = [
 	{org = "ballerina", name = "oauth2"},
 	{org = "ballerina", name = "time"}
 ]
+modules = [
+	{org = "ballerina", packageName = "websocket", moduleName = "websocket"}
+]
 
 [[package]]
 org = "ballerina"
@@ -494,6 +497,7 @@ dependencies = [
 	{org = "ballerina", name = "http"},
 	{org = "ballerina", name = "io"},
 	{org = "ballerina", name = "log"},
+	{org = "ballerina", name = "websocket"},
 	{org = "ballerinax", name = "ai.openai"},
 	{org = "ballerinax", name = "ai.wso2.integration"}
 ]
